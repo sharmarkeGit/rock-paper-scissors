@@ -8,22 +8,49 @@ function getComputerChoice(){
 }
 
 function playRound(playerSelection,computerSelection){
-    if(!["rock","paper","scissors"].includes(playerSelection.toLowerCase())){
-        return `${playerSelection} is not a valid option. Please chose "rock, paper or scissors"`
-    }
-
-
+    
     if(playerSelection.toLowerCase() === computerSelection.toLowerCase()){
-        return `It's a draw. ${playerSelection.toLowerCase()} Vs ${computerSelection.toLowerCase()}`;
+        console.log(`It's a draw. ${playerSelection.toLowerCase()} Vs ${computerSelection.toLowerCase()}`);
+        return "draw";
     }else if(playerSelection.toLowerCase() ==="rock" && computerSelection.toLowerCase() === "scissors"
     || playerSelection.toLowerCase() ==="scissors" && computerSelection.toLowerCase() === "paper"
     || playerSelection.toLowerCase() ==="paper" && computerSelection.toLowerCase() === "rock"){
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+        return "win";
     }else{
-        return `You lose! ${computerSelection} beats ${playerSelection}`;
+        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        return "lose";
     }
 }
 
-const playerSelection = "rock";
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
+function game(){
+    let playerVictoryCounter = 0;
+    let computerVictoryCounter = 0
+    let tableScore = "";
+    for(let i = 0; i < 5; i++){
+        let playerSelection = prompt("Rock, Paper or Scissors?");
+        const computerSelection = getComputerChoice();
+        while(!["rock","paper","scissors"].includes(playerSelection.toLocaleLowerCase())){
+            playerSelection = prompt(`${playerSelection} is not a valid option. Please chose: Rock, Paper, or Scissors`)
+
+        }
+
+        const currentRoundResult = playRound(playerSelection,computerSelection);
+
+        tableScore += playerSelection+" Vs "+computerSelection+" : "+currentRoundResult +"\n"; 
+       if("win" === currentRoundResult){
+        playerVictoryCounter++;
+       }else if("lose" === currentRoundResult){
+        computerVictoryCounter++
+       }
+    }
+    if(playerVictoryCounter>computerVictoryCounter){
+        return `You Win! ${playerVictoryCounter} - ${computerVictoryCounter} \n ${tableScore}`
+    }else if(playerVictoryCounter<computerVictoryCounter){
+        return `You Lose! ${playerVictoryCounter} - ${computerVictoryCounter} \n ${tableScore}`
+    }else{
+        return `It's a draw! ${playerVictoryCounter} - ${computerVictoryCounter} \n ${tableScore}`
+    }
+}
+
+console.log(game());
