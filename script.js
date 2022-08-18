@@ -1,3 +1,5 @@
+let playerSelection;
+
 function getComputerChoice(){
     let randNumber = Math.floor(Math.random() * 3)
     switch(randNumber){
@@ -28,7 +30,7 @@ function game(){
     let computerVictoryCounter = 0
     let tableScore = "";
     //for(let i = 0; i < 5; i++){
-        let playerSelection = prompt("Rock, Paper or Scissors?");
+        //let playerSelection = prompt("Rock, Paper or Scissors?");
         const computerSelection = getComputerChoice();
         while(!["rock","paper","scissors"].includes(playerSelection.toLocaleLowerCase())){
             playerSelection = prompt(`${playerSelection} is not a valid option. Please chose: Rock, Paper, or Scissors`)
@@ -53,4 +55,13 @@ function game(){
     }
 }
 
-console.log(game());
+
+const buttons = document.querySelectorAll('button');
+buttons.forEach(button=>button.addEventListener('click',getPlayerSelection));
+
+function getPlayerSelection(e){
+    playerSelection = this.id;
+    console.log(game());
+}
+
+//console.log(game());
