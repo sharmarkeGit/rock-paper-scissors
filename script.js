@@ -27,7 +27,7 @@ function game(){
     let playerVictoryCounter = 0;
     let computerVictoryCounter = 0
     let tableScore = "";
-    for(let i = 0; i < 5; i++){
+    //for(let i = 0; i < 5; i++){
         let playerSelection = prompt("Rock, Paper or Scissors?");
         const computerSelection = getComputerChoice();
         while(!["rock","paper","scissors"].includes(playerSelection.toLocaleLowerCase())){
@@ -43,7 +43,7 @@ function game(){
        }else if("lose" === currentRoundResult){
         computerVictoryCounter++
        }
-    }
+    //}
     if(playerVictoryCounter>computerVictoryCounter){
         return `You Win! ${playerVictoryCounter} - ${computerVictoryCounter} \n ${tableScore}`
     }else if(playerVictoryCounter<computerVictoryCounter){
