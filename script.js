@@ -12,15 +12,15 @@ function getComputerChoice(){
 function playRound(playerSelection,computerSelection){
     
     if(playerSelection.toLowerCase() === computerSelection.toLowerCase()){
-        console.log(`It's a draw. ${playerSelection.toLowerCase()} Vs ${computerSelection.toLowerCase()}`);
+        //console.log(`It's a draw. ${playerSelection.toLowerCase()} Vs ${computerSelection.toLowerCase()}`);
         return "draw";
     }else if(playerSelection.toLowerCase() ==="rock" && computerSelection.toLowerCase() === "scissors"
     || playerSelection.toLowerCase() ==="scissors" && computerSelection.toLowerCase() === "paper"
     || playerSelection.toLowerCase() ==="paper" && computerSelection.toLowerCase() === "rock"){
-        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+        //console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
         return "win";
     }else{
-        console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
+        //console.log(`You lose! ${computerSelection} beats ${playerSelection}`);
         return "lose";
     }
 }
@@ -61,7 +61,9 @@ buttons.forEach(button=>button.addEventListener('click',getPlayerSelection));
 
 function getPlayerSelection(e){
     playerSelection = this.id;
-    console.log(game());
+    const result =  document.querySelector('.result')
+    result.textContent = game();
+    //console.log(game());
 }
 
 //console.log(game());
