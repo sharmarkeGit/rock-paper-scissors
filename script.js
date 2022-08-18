@@ -1,4 +1,6 @@
 let playerSelection;
+let playerVictoryCounter = 0;
+let computerVictoryCounter = 0
 
 function getComputerChoice(){
     let randNumber = Math.floor(Math.random() * 3)
@@ -26,8 +28,7 @@ function playRound(playerSelection,computerSelection){
 }
 
 function game(){
-    let playerVictoryCounter = 0;
-    let computerVictoryCounter = 0
+    
     let tableScore = "";
     //for(let i = 0; i < 5; i++){
         //let playerSelection = prompt("Rock, Paper or Scissors?");
@@ -63,6 +64,10 @@ function getPlayerSelection(e){
     playerSelection = this.id;
     const result =  document.querySelector('.result')
     result.textContent = game();
+    const player = document.querySelector('p.player')
+    const computer = document.querySelector('p.computer')
+    player.textContent = playerVictoryCounter;
+    computer.textContent = computerVictoryCounter;
     //console.log(game());
 }
 
